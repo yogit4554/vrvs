@@ -1,38 +1,26 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
-import UserList from './components/UserManagement/UserList';
-import CreateUser from './components/UserManagement/CreateUser';
-import EditUser from './components/UserManagement/EditUser';
-import Dashboard from './components/Dashboard';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import CreateUser from "./components/CreateUser";
 
 const App = () => {
-  // Get the current user from the Redux store
-  const { userInfo } = useSelector((state) => state.userAuth);
+  const [user, setUser] = useState(null);
 
   return (
-    <div className="App">
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/login" element={!userInfo ? <Login /> : <Navigate to="/" />} />
-        <Route path="/register" element={!userInfo ? <Register /> : <Navigate to="/" />} />
-
-        {/* Protected Routes */}
-        {userInfo && (
-          <>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/users" element={<UserList />} />
-            <Route path="/users/create" element={<CreateUser />} />
-            <Route path="/users/edit/:id" element={<EditUser />} />
-          </>
-        )}
-
-        {/* Redirect unknown routes */}
-        <Route path="*" element={<Navigate to={userInfo ? "/" : "/login"} />} />
-      </Routes>
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gray-100">
+        <Header user={user} setUser={setUser} />
+        <Routes>
+          <Route path="/" element={<Login setUser={setUser} />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard user={user} />} />
+          <Route path="/create-user" element={<CreateUser />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
