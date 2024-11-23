@@ -44,13 +44,13 @@ const UserCard = ({ user, setUsers }) => {
               onClick={() => setIsEditing(true)}
               className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition duration-300"
             >
-              Edit
+              <i className="fas fa-edit mr-2"></i> Edit
             </button>
             <button
               onClick={handleDelete}
               className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-300"
             >
-              Delete
+              <i className="fas fa-trash-alt mr-2"></i> Delete
             </button>
           </div>
         </>
@@ -87,13 +87,13 @@ const UserCard = ({ user, setUsers }) => {
               type="submit"
               className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-300"
             >
-              Save
+              <i className="fas fa-save mr-2"></i> Save
             </button>
             <button
               onClick={() => setIsEditing(false)}
               className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg transition duration-300"
             >
-              Cancel
+              <i className="fas fa-times mr-2"></i> Cancel
             </button>
           </div>
         </form>

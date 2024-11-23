@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const Header = ({ user, setUser }) => {
+const Header = ({ user, onLogout }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    setUser(null);
-    navigate("/");
+    onLogout(); // Clear user state and localStorage
+    navigate("/"); // Redirect to login page
   };
 
   return (
@@ -16,9 +16,7 @@ const Header = ({ user, setUser }) => {
         background: "linear-gradient(to right, #1f2937, #374151)",
       }}
     >
-      <h1 className="text-2xl font-bold">
-        VRV Security 
-      </h1>
+      <h1 className="text-2xl font-bold">VRV Security</h1>
       <nav className="flex space-x-4 items-center text-sm font-medium">
         {user ? (
           <>
