@@ -17,13 +17,14 @@ const getUsers = asyncHandler(async(req,res)=>{
 });
 
 const createUser = asyncHandler(async(req,res)=>{
-    const {name,email,role} = req.body;
+    const {name,email,role,status} = req.body;
     console.log(req.body);
     try {
         const user= await User.create({
             name,
             email,
-            role
+            role,
+            status
         })
 
         const CreatedUser= await User.findById(user._id).select(

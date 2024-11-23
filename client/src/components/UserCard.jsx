@@ -32,69 +32,66 @@ const UserCard = ({ user, setUsers }) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow">
+    <div className="bg-gradient-to-r from-gray-800 to-gray-700 p-6 rounded-lg shadow-lg w-full max-w-sm mx-auto mb-4">
       {!isEditing ? (
         <>
-          <h3 className="font-bold">{user.name}</h3>
-          <p>{user.email}</p>
-          <p>Role: {user.role}</p>
-          <p>Status: {user.status}</p>
-          <div className="mt-2 space-x-2">
+          <h3 className="text-2xl font-semibold text-white">{user.name}</h3>
+          <p className="text-white">{user.email}</p>
+          <p className="text-white">Role: {user.role}</p>
+          <p className="text-white">Status: {user.status}</p>
+          <div className="mt-4 space-x-2">
             <button
               onClick={() => setIsEditing(true)}
-              className="bg-yellow-500 text-white px-2 py-1 rounded"
+              className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition duration-300"
             >
               Edit
             </button>
             <button
               onClick={handleDelete}
-              className="bg-red-600 text-white px-2 py-1 rounded"
+              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-300"
             >
               Delete
             </button>
           </div>
         </>
       ) : (
-        <form onSubmit={handleEdit} className="space-y-2">
+        <form onSubmit={handleEdit} className="space-y-4">
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="block w-full border px-3 py-2 rounded"
+            className="block w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="block w-full border px-3 py-2 rounded"
+            className="block w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <select
+          <input
+            type="text"
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="block w-full border px-3 py-2 rounded"
-          >
-            <option value="Viewer">Viewer</option>
-            <option value="Editor">Editor</option>
-            <option value="Manager">Manager</option>
-          </select>
+            className="block w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="block w-full border px-3 py-2 rounded"
+            className="block w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
           </select>
-          <div className="mt-2 space-x-2">
+          <div className="mt-4 space-x-2">
             <button
               type="submit"
-              className="bg-green-600 text-white px-2 py-1 rounded"
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-300"
             >
               Save
             </button>
             <button
               onClick={() => setIsEditing(false)}
-              className="bg-gray-400 text-white px-2 py-1 rounded"
+              className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg transition duration-300"
             >
               Cancel
             </button>

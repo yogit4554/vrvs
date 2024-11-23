@@ -18,12 +18,22 @@ const Dashboard = ({ user }) => {
   }, []);
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">User Dashboard</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {users.map((user) => (
-          <UserCard key={user._id} user={user} setUsers={setUsers} />
-        ))}
+    <div
+      className="min-h-screen bg-gradient-to-r from-gray-800 to-gray-600 text-white"
+      style={{
+        background: "linear-gradient(to right, #1f2937, #4b5563)", // full-page background gradient
+        paddingBottom: "40px", // space at the bottom for mobile view
+      }}
+    >
+      <div className="container mx-auto p-4">
+        <h2 className="text-3xl font-semibold text-center mb-8">
+          Admin Dashboard
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {users.map((user) => (
+            <UserCard key={user._id} user={user} setUsers={setUsers} />
+          ))}
+        </div>
       </div>
     </div>
   );

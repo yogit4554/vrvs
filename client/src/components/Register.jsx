@@ -20,36 +20,61 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div
+      className="flex items-center justify-center min-h-screen px-4"
+      style={{
+        background: "linear-gradient(to right, #1f2937, #4b5563)",
+        color: "#f9fafb",
+      }}
+    >
       <form
-        className="bg-grey p-6 rounded shadow-md space-y-4"
+        className="bg-gray-800 text-white p-8 rounded-lg shadow-lg w-full max-w-md space-y-6"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-bold">Register</h2>
+        <div className="text-center">
+          <img
+            src="../../public/logo.png" // Path to your logo image
+            alt="Company Logo"
+            className="mx-auto mb-4 w-24" // Adjust width to fit your design
+          />
+          <h2 className="text-3xl font-bold">Create Your Account</h2>
+          <p className="text-gray-400 text-center text-sm">
+            Join the cybersecurity revolution and protect your digital frontiers.
+          </p>
+        </div>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="block w-full border px-3 py-2 rounded"
+          className="block w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="block w-full border px-3 py-2 rounded"
+          className="block w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="block w-full border px-3 py-2 rounded"
+          className="block w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300"
+        >
           Register
         </button>
+        <p className="text-center text-gray-500 text-sm">
+          Already have an account?{" "}
+          <a href="/" className="text-blue-400 hover:underline">
+            Login here
+          </a>
+        </p>
       </form>
     </div>
   );

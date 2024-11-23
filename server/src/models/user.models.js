@@ -12,8 +12,7 @@ const userSchema=new Schema({
     },
     role:{
         type:String,
-        enum: ['Viewer', 'Editor', 'Manager'], // Example roles
-        default: 'Viewer',
+        required:true
     },
     status:{
         type:String,
