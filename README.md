@@ -87,14 +87,14 @@ This project offers a comprehensive solution with the following features:
 
 ### Backend: API Endpoints
 1. **Authentication**
-   - `POST /api/auth/register`: Register a new user.
-   - `POST /api/auth/login`: Login a user.
+   - `POST /api/v1/register`: Register a new user.
+   - `POST /api/v1/login`: Login a user.
 
 2. **User Management**
-   - `GET /api/users`: Retrieve all users.
-   - `POST /api/users`: Add a new user.
-   - `PUT /api/users/:id`: Update user details.
-   - `DELETE /api/users/:id`: Delete a user.
+   - `GET /api/v1/user/get-users`: Retrieve all users.
+   - `POST /api/v1/user/get-users`: Add a new user.
+   - `PUT /api/v1/user/:id`: Update user details.
+   - `DELETE /api/v1/user/:id`: Delete a user.
 
 ---
 
