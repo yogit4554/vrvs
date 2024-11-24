@@ -177,6 +177,38 @@ Each step ensures a seamless admin experience.
 
 ---
 
+## 🖼️ MongoDB Collection Snapshots
+
+- **User Document Collection**  
+   ![MongoDB User Collection](./photos/mongodb.jpg)
+
+- **Admin Document Collection**  
+   ![MongoDB Admin Collection](./photos/mongodb%20user.jpg)
+
+---
+
+## 🛠️ Postman Testing Snapshots
+
+- **Postman Testing: Register API**  
+   ![Postman Login Testing](./photos/postman-register.png)
+
+- **Postman Testing: Login API**  
+   ![Postman Login Testing](./photos/postman-login.png)
+
+- **Postman Testing: Create User API**  
+   ![Postman Login Testing](./photos/postman-create-user.png)
+
+- **Postman Testing: Get All Users API**  
+   ![Postman Get Users](./photos/postman-getalll.png)
+
+- **Postman Testing: Update User API**  
+   ![Postman Get Users](./photos/postman-update-user.png)
+
+- **Postman Testing: Delete User API**  
+   ![Postman Get Users](./photos/postman-delete-user.png)
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions! Follow these steps:
