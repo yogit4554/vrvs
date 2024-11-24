@@ -1,30 +1,38 @@
 import { ApiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import { Admin } from "../models/admin.models.js";
-
 
 export const verifyJWT = asyncHandler(async (req, res, next) => {
     try {
+        // Extract the token from cookies or Authorization header
         const token = 
             req.cookies?.accessToken || 
-            req.header("Authorization")?.replace("Bearer ", "").trim(); // Fix: Remove 'Bearer ' properly
+            req.header("Authorization")?.replace("Bearer ", "").trim();
 
         if (!token) {
-            throw new ApiError(401, "Unauthorized request");
+            throw new ApiError(401, "Unauthorized request - No token provided");
         }
 
+        // Verify the token
         const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        
-        // Fix: Check for the proper model if you're using Admins for authentication
-        const user = await Admin.findById(decodedToken.id).select("-password -refreshToken");
+
+        // Fetch the user based on the token payload
+        const user = await Admin.findById(decodedToken.id).select("-password");
         if (!user) {
-            throw new ApiError(401, "Invalid Access Token");
+            throw new ApiError(401, "Unauthorized request - User not found");
         }
 
-        req.user = user; // Attach user to request for future use
+        // Attach the user object to the request for future use
+        req.user = user;
         next();
     } catch (error) {
-        throw new ApiError(401, error?.message || "Invalid Access Token");
+        if (error.name === "JsonWebTokenError") {
+            throw new ApiError(401, "Unauthorized request - Invalid token");
+        } else if (error.name === "TokenExpiredError") {
+            throw new ApiError(401, "Unauthorized request - Token has expired");
+        } else {
+            throw new ApiError(401, error.message || "Unauthorized request");
+        }
     }
 });
