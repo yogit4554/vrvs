@@ -136,7 +136,7 @@ This project offers a comprehensive solution with the following features:
 
 1. **Navigate to the frontend directory**:
     ```bash
-    cd ../frontend
+    cd ../client
     ```
 
 2. **Install dependencies**:
